@@ -8,8 +8,8 @@ import { usePathname } from 'next/navigation';
 const pages = [
   { name: 'Home', href: '/' },
   { name: 'Game', href: '/game' },
-  { name: 'About', href: '/about' },
-  { name: 'Instructions', href: '/instructions' }
+  { name: 'Instructions', href: '/instructions' },
+  { name: 'About', href: '/about' }
 ];
 
 const activeLink = 'bg-gray-700 text-white w-fit';

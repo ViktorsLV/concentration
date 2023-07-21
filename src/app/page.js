@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Home = () => {
   return (
-    <div className="max-w-2xl mx-auto py-28 sm:py-40 ">
+    <div className="max-w-2xl py-24 mx-auto sm:py-36">
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Welcome to - Concentration Game!</h1>
         <p className="mt-6 text-lg leading-8 text-white">
