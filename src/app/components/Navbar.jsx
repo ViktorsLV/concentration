@@ -12,13 +12,13 @@ const pages = [
   { name: 'Instructions', href: '/instructions' }
 ];
 
-const activeLink = 'bg-gray-900 text-white w-fit';
+const activeLink = 'bg-gray-700 text-white w-fit';
 
 const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="z-50 bg-primary">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
