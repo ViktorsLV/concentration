@@ -100,7 +100,7 @@ const GameBoard = () => {
       <div className="flex justify-center w-full mt-8">
         <p className="text-2xl font-medium text-white">Turns: {turnCount}</p>
       </div>
-      <div className="flex items-center w-4/5 mx-auto mt-8 sm:w-2/5 lg:w-1/5">
+      <div className="flex items-center w-3/5 mx-auto mt-8 sm:w-2/5 ">
         <Button text="Restart Game" onClick={resetGame} disabled={turnCount === 0 && !firstCard} />
       </div>
       {isOpen && <Alert toggleAlert={toggleAlert} open={isOpen} turnCount={turnCount} />}
