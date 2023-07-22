@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import Image from 'next/image';
-
 import Alert from './Alert';
+import Card from './Card';
 
 const gameCards = [
   { src: '/images/bunny.webp', matched: false },
@@ -17,7 +16,7 @@ const gameCards = [
   { src: '/images/sylwester.webp', matched: false }
 ];
 
-const GameBoard = ({ toggleModal }) => {
+const GameBoard = () => {
   const [cards, setCards] = useState();
   const [turnCount, setTurnCount] = useState(0);
 
@@ -83,16 +82,7 @@ const GameBoard = ({ toggleModal }) => {
     <>
       <div className="grid w-full grid-flow-row grid-cols-4 grid-rows-4 gap-2 mx-auto sm:gap-6">
         {cards?.map((card) => (
-          <Card
-            key={card.id}
-            card={card}
-            firstCard={firstCard}
-            secondCard={secondCard}
-            setTurnCount={setTurnCount}
-            turnCount={turnCount}
-            handleClick={() => handleCardClick(card)}
-            turnedAround={firstCard === card || secondCard === card || card.matched}
-          />
+          <Card key={card.id} card={card} handleClick={() => handleCardClick(card)} turnedAround={firstCard === card || secondCard === card || card.matched} />
         ))}
       </div>
       <div className="flex justify-center w-full mt-8">
@@ -104,22 +94,3 @@ const GameBoard = ({ toggleModal }) => {
 };
 
 export default GameBoard;
-
-const Card = ({ card, handleClick, turnedAround }) => {
-  return (
-    <div className="w-full h-[100px] relative bg-gray-300 rounded-xl">
-      {turnedAround ? (
-        <Image src={card.src} alt="front card" fill={true} objectFit="contain" />
-      ) : (
-        <Image
-          onClick={handleClick}
-          src="/images/looneyTunes.avif"
-          alt="back card"
-          fill={true}
-          objectFit="cover"
-          className="transition-all duration-300 ease-in-out rounded-xl opacity-85 hover:cursor-pointer hover:opacity-90"
-        />
-      )}
-    </div>
-  );
-};
