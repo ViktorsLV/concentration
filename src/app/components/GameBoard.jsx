@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
+import Alert from './Alert';
+
 const gameCards = [
   { src: '/images/bunny.webp', matched: false },
   { src: '/images/coyote.webp', matched: false },
@@ -15,12 +17,13 @@ const gameCards = [
   { src: '/images/sylwester.webp', matched: false }
 ];
 
-const GameBoard = () => {
+const GameBoard = ({ toggleModal }) => {
   const [cards, setCards] = useState();
   const [turnCount, setTurnCount] = useState(0);
 
   const [firstCard, setFirstCard] = useState();
   const [secondCard, setSecondCard] = useState();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     resetGame();
@@ -43,8 +46,7 @@ const GameBoard = () => {
 
   useEffect(() => {
     if (cards?.every((card) => card.matched)) {
-      alert(`You won in ${turnCount} turns!`);
-      resetGame();
+      toggleAlert();
     }
   }, [cards]);
 
@@ -73,6 +75,10 @@ const GameBoard = () => {
     setTurnCount(0);
   };
 
+  const toggleAlert = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="grid w-full grid-flow-row grid-cols-4 grid-rows-4 gap-2 mx-auto sm:gap-6">
@@ -92,6 +98,7 @@ const GameBoard = () => {
       <div className="flex justify-center w-full mt-8">
         <p className="text-2xl font-medium text-white">Turns: {turnCount}</p>
       </div>
+      {isOpen && <Alert toggleAlert={toggleAlert} open={isOpen} turnCount={turnCount} />}
     </>
   );
 };
@@ -102,12 +109,12 @@ const Card = ({ card, handleClick, turnedAround }) => {
   return (
     <div className="w-full h-[100px] relative bg-gray-300 rounded-xl">
       {turnedAround ? (
-        <Image src={card.src} alt="card front" fill={true} objectFit="contain" />
+        <Image src={card.src} alt="front card" fill={true} objectFit="contain" />
       ) : (
         <Image
           onClick={handleClick}
           src="/images/looneyTunes.avif"
-          alt="card back"
+          alt="back card"
           fill={true}
           objectFit="cover"
           className="transition-all duration-300 ease-in-out rounded-xl opacity-85 hover:cursor-pointer hover:opacity-90"
