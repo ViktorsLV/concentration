@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={'overflow-x-hidden overflow-y-scroll'}>
+      <body className={`${inter.className} overflow-x-hidden overflow-y-scroll`}>
         <Navbar />
         <main className="min-h-screen py-20 bg-gray-900 h-fit sm:py-24">
           <div className="relative px-6 isolate pt-14 lg:px-8">
