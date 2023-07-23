@@ -34,14 +34,12 @@ const GameBoard = () => {
     if (firstCard && secondCard) {
       setClickDisabled(true);
       if (firstCard.src === secondCard.src) {
-        console.log('match');
         setCards((prev) => prev.map((card) => (card.id === firstCard.id || card.id === secondCard.id ? { ...card, matched: true } : card)));
         resetValues();
         setTimeout(() => {
           setClickDisabled(false);
         }, 300);
       } else {
-        console.log('no match');
         setTimeout(() => {
           resetValues();
           setClickDisabled(false);
@@ -103,7 +101,7 @@ const GameBoard = () => {
       <div className="flex items-center w-3/5 mx-auto mt-8 sm:w-2/5 ">
         <Button text="Restart Game" onClick={resetGame} disabled={turnCount === 0 && !firstCard} />
       </div>
-      {isOpen && <Alert toggleAlert={toggleAlert} open={isOpen} turnCount={turnCount} />}
+      {isOpen && <Alert toggleAlert={toggleAlert} open={isOpen} turnCount={turnCount} resetGame={resetGame} />}
     </>
   );
 };

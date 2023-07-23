@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 
 import Button from './Button';
 
-const Alert = ({ toggleAlert, turnCount, open }) => {
+const Alert = ({ toggleAlert, turnCount, open, resetGame }) => {
   return (
     <>
       <Transition appear show={open} as={Fragment}>
@@ -39,7 +39,13 @@ const Alert = ({ toggleAlert, turnCount, open }) => {
                   </div>
 
                   <div className="mt-4">
-                    <Button text="Play again" onClick={toggleAlert} />
+                    <Button
+                      text="Play again"
+                      onClick={() => {
+                        resetGame();
+                        toggleAlert();
+                      }}
+                    />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
