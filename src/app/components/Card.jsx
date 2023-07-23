@@ -4,7 +4,7 @@ const Card = ({ card, handleClick, turnedAround }) => {
   return (
     <div className="w-full h-[100px] relative bg-gray-300 rounded-xl">
       {turnedAround ? (
-        <Image src={card.src} alt="front card" fill={true} objectFit="contain" />
+        <Image src={card.src} alt="front card" fill={true} objectFit="contain" className="rounded-xl" />
       ) : (
         <Image
           onClick={handleClick}

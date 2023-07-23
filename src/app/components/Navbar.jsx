@@ -23,9 +23,10 @@ const Navbar = () => {
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
-              <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
+              <div className="flex items-center justify-center flex-1 sm:justify-between">
                 <div className="flex items-center flex-shrink-0">
-                  <img className="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Logo" />
+                  {/* <img className="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Logo" /> */}
+                  <h4 className="text-white">Concentration Game</h4>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
