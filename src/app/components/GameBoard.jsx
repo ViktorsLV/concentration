@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Alert from './Alert';
 import Button from './Button';
 import Card from './Card';
+import CardSkeleton from './CardSkeleton';
 
 const gameCards = [
   { src: '/images/bunny.webp', matched: false },
@@ -86,14 +87,18 @@ const GameBoard = () => {
   return (
     <>
       <div className="grid w-full grid-flow-row grid-cols-4 grid-rows-4 gap-2 mx-auto sm:gap-6">
-        {cards?.map((card) => (
-          <Card
-            key={card.id}
-            card={card}
-            handleClick={clickDisabled ? null : () => handleCardClick(card)}
-            turnedAround={firstCard === card || secondCard === card || card.matched}
-          />
-        ))}
+        {cards?.length > 0
+          ? cards?.map((card) => (
+              <Card
+                key={card.id}
+                card={card}
+                handleClick={clickDisabled ? null : () => handleCardClick(card)}
+                turnedAround={firstCard === card || secondCard === card || card.matched}
+              />
+            ))
+          : Array(16)
+              .fill()
+              .map((_, index) => <CardSkeleton key={index} />)}
       </div>
       <div className="flex justify-center w-full mt-8">
         <p className="text-2xl font-medium text-white">Turns: {turnCount}</p>
