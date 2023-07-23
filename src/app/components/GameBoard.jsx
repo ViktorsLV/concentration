@@ -44,7 +44,7 @@ const GameBoard = () => {
         setTimeout(() => {
           resetValues();
           setClickDisabled(false);
-        }, 1000);
+        }, 1200);
       }
     }
   }, [firstCard, secondCard]);
